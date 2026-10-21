@@ -4,11 +4,12 @@ The V2X Project is a comprehensive vehicular communication system consisting of 
 ![image](https://github.com/mohnagah/V2X_STM32_BLUEPILL/assets/157398651/ecb7130c-e697-464e-97d5-9eb3485a362e)
 
 # Table of Contents
-* [Overview](#Overview)
-* [Sub-Systems](#Sub-Systems)
-* [Hardware Platform](#Hardware_Platform)
-* [Installation and Setup](#Installation_and_Setup)
-* [Video](#Video)
+* [Overview](#overview)
+* [Sub-Systems](#sub-systems)
+* [Hardware Platform](#hardware-platform)
+* [Repository Layout](#repository-layout)
+* [Installation and Setup](#installation-and-setup)
+* [Video](#video)
 
 ## Overview
 The V2X project aims to enhance road safety and traffic efficiency through real-time communication and intelligent decision-making capabilities. By integrating cutting-edge technology and utilizing the STM32F103 BLUE PILL microcontroller platform, the project enables seamless interaction between vehicles and their environment.
@@ -43,11 +44,24 @@ Features:
 ## Hardware Platform
 All sub-systems, including the master and slave vehicles, as well as the traffic light system, are programmed on the STM32F103 BLUE PILL microcontroller platform. This platform provides a robust and flexible foundation for developing intelligent vehicular communication systems.
 
+## Repository Layout
+
+| Folder | Contents |
+|---|---|
+| `V2V/` | Master and slave car firmware that exchange safety modes and drive the motors from ultrasonic readings |
+| `V2I/` | Master car, slave car and traffic-light (roadside unit) firmware |
+| `V2N(FOTA)/BLUEPILL_FOTA/` | Bootloader with its own RCC, GPIO, NVIC, SysTick, UART and flash drivers and an Intel HEX parser; it erases the application area, flashes the received image and jumps to it |
+| `V2N(FOTA)/NodeMCU/` | ESP8266 sketch that downloads the encrypted application from the web server, decrypts it and forwards it to the bootloader over UART |
+| `V2N(FOTA)/SerialPort/` | Proteus simulation of the update and a PC script that streams the image to a serial port |
+| `Integration/` | All three sub-systems combined: two cars and the traffic light |
+
+The car and traffic-light projects are STM32CubeIDE projects, and the bootloader is an Eclipse Embedded CDT project. Import each one with File, Import, Existing Projects into Workspace, then build. The NodeMCU sketch builds with the Arduino IDE after setting the network and server in `config.h`.
+
 ## Installation and Setup
 Detailed installation and setup instructions for each sub-system can be found in their respective README files:
-* [V2V Sub-system](https://github.com/mohnagah/V2X_STM32_BLUEPILL/blob/main/V2V/README.md)
-* [V2I Sub-system](https://github.com/mohnagah/V2X_STM32_BLUEPILL/blob/main/V2I/README.md)
-* [V2N (FOTA) Sub-system](https://github.com/mohnagah/V2X_STM32_BLUEPILL/blob/main/V2N(FOTA)/README.md)
+* [V2V Sub-system](V2V/README.md)
+* [V2I Sub-system](V2I/README.md)
+* [V2N (FOTA) Sub-system](V2N(FOTA)/README.md)
 
 ## Video
 [V2X Video](https://drive.google.com/file/d/1F-bdVTFiJUpT6BwC1ZCleQs7BNeWXbmT/view?usp=sharing)

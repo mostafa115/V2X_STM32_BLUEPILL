@@ -1,9 +1,9 @@
 /* Enter the user name and password of wifi here */
-#define WIFI_SSID       "WE_A3432C"
-#define WIFI_PASSWORD   "n6n05253"
+#define WIFI_SSID       "YOUR_SSID"
+#define WIFI_PASSWORD   "YOUR_PASSWORD"
 
-//#define WIFI_SSID       "jamal10"
-//#define WIFI_PASSWORD   "JjGg830038gGjJ10"
+//#define WIFI_SSID       "YOUR_SSID"
+//#define WIFI_PASSWORD   "YOUR_PASSWORD"
 
 /* Enter the baud rate here */
 #define UART_BAUDRATE   9600
